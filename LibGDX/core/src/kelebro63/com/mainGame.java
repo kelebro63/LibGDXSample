@@ -2,6 +2,7 @@ package kelebro63.com;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
@@ -64,6 +65,12 @@ public class mainGame extends ApplicationAdapter {
 			camera.unproject(touchPos);
 			bucket.x = (int) (touchPos.x - 64 / 2);
 		}
+
+		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) bucket.x -= 2000 * Gdx.graphics.getDeltaTime();
+		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) bucket.x += 200 * Gdx.graphics.getDeltaTime();
+
+		if (bucket.x < 0) bucket.x = 0;
+		if (bucket.x > 800 - 64) bucket.x = 800 - 64;
 	}
 	
 	@Override
